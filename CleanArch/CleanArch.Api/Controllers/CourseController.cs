@@ -20,9 +20,9 @@ namespace CleanArch.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] CourseViewModel courseViewModel) {
+        public IActionResult Post([FromBody] CourseViewModel courseViewModel)
+        {
             _courseService.Create(courseViewModel);
-
             return Ok(courseViewModel);
         }
     }
