@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CleanArch.Application.CommandHandlers
+namespace CleanArch.Domain.Services.Handlers
 {
-    public class CourseCommandHandler : IRequestHandler<CreateCourseCommand, CreateCourseResult>
+    public class CreateCourseCommandHandler : IRequestHandler<CreateCourseCommand, CreateCourseResult>
     {
         private readonly ICourseRepository _courseRepository;
 
-        public CourseCommandHandler(ICourseRepository courseRepository)
+        public CreateCourseCommandHandler(ICourseRepository courseRepository)
         {
             _courseRepository = courseRepository;
         }

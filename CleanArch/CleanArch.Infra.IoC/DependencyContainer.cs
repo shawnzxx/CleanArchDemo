@@ -1,8 +1,8 @@
-﻿using CleanArch.Application.CommandHandlers;
-using CleanArch.Application.Interfaces;
+﻿using CleanArch.Application.Interfaces;
 using CleanArch.Application.Services;
 using CleanArch.Domain.Interfaces;
 using CleanArch.Domain.Services.Commands;
+using CleanArch.Domain.Services.Handlers;
 using CleanArch.Infra.Data.Context;
 using CleanArch.Infra.Data.Repository;
 using MediatR;
@@ -15,7 +15,7 @@ namespace CleanArch.Infra.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             //Command Handler
-            services.AddScoped<IRequestHandler<CreateCourseCommand, CreateCourseResult>, CourseCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateCourseCommand, CreateCourseResult>, CreateCourseCommandHandler>();
 
             //Application layer
             services.AddScoped<ICourseService, CourseService>();
