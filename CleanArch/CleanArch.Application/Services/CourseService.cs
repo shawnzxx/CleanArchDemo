@@ -1,43 +1,36 @@
 ﻿using CleanArch.Application.Interfaces;
-using CleanArch.Application.ViewModels;
-using CleanArch.Domain.Commands;
-using CleanArch.Domain.Core.Bus;
 using CleanArch.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using CleanArch.Domain.Services.Commands;
+using CleanArch.Domain.Services.Commands.Dtos;
+using MediatR;
 
 namespace CleanArch.Application.Services
 {
     public class CourseService : ICourseService
     {
         private readonly ICourseRepository _courseRepository;
-        private readonly IMediatorHandler _bus;
+        private readonly IMediator _mediator;
 
-        public CourseService(ICourseRepository courseRepository, IMediatorHandler bus)
+        public CourseService(ICourseRepository courseRepository, IMediator mediator)
         {
             _courseRepository = courseRepository;
-            _bus = bus;
+            _mediator = mediator;
         }
 
-        public void Create(CourseViewModel courseViewModel)
+        public void PostCourse(CreateCourseDto createCourseDto)
         {
-            var createCourseCommand = new CreateCourseCommand(
-                    courseViewModel.Name,
-                    courseViewModel.Description,
-                    courseViewModel.ImageUrl
-                );
-
-            _bus.SendCommand(createCourseCommand);
+            var createCourseCommand = new CreateCourseCommand();
+            createCourseCommand.CreateCourseDto = createCourseDto;
+            _mediator.Send(createCourseCommand);
         }
 
-        public CourseViewModel GetCourses()
-        {
-            var courses = _courseRepository.GetCourses();
-            return new CourseViewModel()
-            {
-                Courses = courses
-            };
-        }
+        //public CourseViewModel GetCourses()
+        //{
+        //    var courses = _courseRepository.GetCourses();
+        //    return new CourseViewModel()
+        //    {
+        //        Courses = courses
+        //    };
+        //}
     }
 }

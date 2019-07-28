@@ -1,16 +1,13 @@
-﻿using CleanArch.Domain.Core.Commands;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanArch.Domain.Commands
+namespace CleanArch.Domain.Services.Queries.Dtos
 {
-    public abstract class CourseCommand : Command
+    public class CourseDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-        
-
     }
 }

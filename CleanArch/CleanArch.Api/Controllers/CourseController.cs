@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CleanArch.Application.Interfaces;
-using CleanArch.Application.ViewModels;
+using CleanArch.Domain.Services.Commands.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArch.Api.Controllers
@@ -20,10 +20,10 @@ namespace CleanArch.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] CourseViewModel courseViewModel)
+        public IActionResult Post([FromBody] CreateCourseDto createCourseDto)
         {
-            _courseService.Create(courseViewModel);
-            return Ok(courseViewModel);
+            _courseService.PostCourse(createCourseDto);
+            return Ok();
         }
     }
 }

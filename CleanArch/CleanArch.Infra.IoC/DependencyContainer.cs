@@ -1,17 +1,12 @@
-﻿using CleanArch.Application.Interfaces;
+﻿using CleanArch.Application.CommandHandlers;
+using CleanArch.Application.Interfaces;
 using CleanArch.Application.Services;
-using CleanArch.Domain.CommandHandlers;
-using CleanArch.Domain.Commands;
-using CleanArch.Domain.Core.Bus;
 using CleanArch.Domain.Interfaces;
-using CleanArch.Infra.Bus;
+using CleanArch.Domain.Services.Commands;
 using CleanArch.Infra.Data.Context;
 using CleanArch.Infra.Data.Repository;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CleanArch.Infra.IoC
 {
@@ -19,11 +14,8 @@ namespace CleanArch.Infra.IoC
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            //Domain InMemoryBus MediatR
-            services.AddScoped<IMediatorHandler, InMemoryBus>();
-
-            //Domain Handler
-            services.AddScoped<IRequestHandler<CreateCourseCommand, bool>, CourseCommandHandler>();
+            //Command Handler
+            services.AddScoped<IRequestHandler<CreateCourseCommand, CreateCourseResult>, CourseCommandHandler>();
 
             //Application layer
             services.AddScoped<ICourseService, CourseService>();

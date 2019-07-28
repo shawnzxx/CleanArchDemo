@@ -1,16 +1,13 @@
-﻿using CleanArch.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanArch.Application.ViewModels
+namespace CleanArch.Domain.Services.Commands.Dtos
 {
-    public class CourseViewModel
+    public class CreateCourseDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }
-
-        public IEnumerable<Course> Courses { get; set; }
     }
 }

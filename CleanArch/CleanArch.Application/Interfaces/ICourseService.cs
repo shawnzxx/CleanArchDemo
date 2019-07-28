@@ -1,4 +1,4 @@
-﻿using CleanArch.Application.ViewModels;
+﻿using CleanArch.Domain.Services.Commands.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +7,8 @@ namespace CleanArch.Application.Interfaces
 {
     public interface ICourseService
     {
-        CourseViewModel GetCourses();
+        //CourseViewModel GetCourses();
 
-        void Create(CourseViewModel courseViewModel);
+        void PostCourse(CreateCourseDto createCourseDto);
     }
 }
